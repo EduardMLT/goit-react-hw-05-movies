@@ -2,9 +2,7 @@ import { Component } from 'react';
 
 import { GlobalStyle } from 'GlobalStyle';
 
-import { Searchbar } from './Searchbar/Searchbar';
-import { ImageGallery } from './ImageGallery/ImageGallery';
-import { Button } from './Button/Button';
+
 import { fetchImages } from '../api';
 import { Loader } from './Loader/Loader';
 import { StyledApp } from './App.styled';
@@ -78,13 +76,11 @@ export class App extends Component {
   };
 
   render() {
-    const { images, loading, page, totalPages } = this.state;
+    
     return (
       <StyledApp>
-        <Searchbar onSubmit={this.changeQuery} />
-        {images.length > 0 && <ImageGallery images={images} />}
-        {loading && <Loader />}
-        {page < totalPages && <Button onClick={this.handleLoadMore} />}
+        
+        <Loader />
         <Toaster />
         <GlobalStyle />
       </StyledApp>
