@@ -8,10 +8,10 @@ export const List = styled.ul`
 
 export const Item = styled.li`
   display: block;
-  margin-bottom: 15px;
+  /* margin-bottom: 15px; */
   padding: 10px, 15px;
   font-family: Roboto sans-serif;
   font-size: 22px;
   font-weight: 700;
-  color: #8bdfc3;
+  color: "#8bdfc3";
 `;

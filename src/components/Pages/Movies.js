@@ -1,5 +1,5 @@
 import { fetchSeachMovie } from 'api';
-import { Searchbar } from 'components/Seachbar/Seachbar';
+import { Searchbar } from 'components/Searchbar/Searchbar';
 import { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
