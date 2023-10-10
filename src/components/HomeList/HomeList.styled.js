@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const List = styled.ul`
   display: block;
@@ -6,12 +7,13 @@ export const List = styled.ul`
   
 `;
 
-export const Item = styled.li`
+export const Item = styled(Link)`
   display: block;
-  /* margin-bottom: 15px; */
   padding: 10px, 15px;
   font-family: Roboto sans-serif;
   font-size: 22px;
   font-weight: 700;
-  color: "#8bdfc3";
+  color: green;
 `;
+
+
