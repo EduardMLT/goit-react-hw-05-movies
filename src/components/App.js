@@ -1,89 +1,17 @@
-import { Component } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
-import { GlobalStyle } from 'GlobalStyle';
+import HomePage from './Pages/HomePage';
+import NewPage from './Pages/NewPage';
+import ToDoPage from './Pages/ToDoPage';
 
+const App = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/news" element={<NewPage />} />
+      <Route path="/todo" element={<ToDoPage />} />
+    </Routes>
+  );
+};
 
-import { fetchImages } from '../api';
-import { Loader } from './Loader/Loader';
-import { StyledApp } from './App.styled';
-import toast, { Toaster } from 'react-hot-toast';
-
-const per_page = 12;
-
-export class App extends Component {
-  state = {
-    query: '',
-    images: [],
-    page: 1,
-    loading: false,
-    totalPages: 1,
-  };
-
-  async componentDidUpdate(prevProps, prevState) {
-    const { query, page } = this.state;
-
-    if (prevState.query !== query || prevState.page !== page) {
-      try {
-        this.setState({ loading: true });
-        const searchQuery = query.slice(query.indexOf('/') + 1);
-        const items = await fetchImages(searchQuery, page, per_page);
-        const { hits, total } = items;
-        const totalPages = Math.ceil(total / per_page);
-
-        if (!hits.length) {
-          toast.error('Sorry,nothing found!', {
-            duration: 2000,
-          });
-        } else {
-          this.setState(prevState => ({
-            images: page > 1 ? [...prevState.images, ...hits] : hits,
-            totalPages,
-          }));
-
-          if (page === totalPages) {
-            toast.success('That`s all images!', {
-              style: {
-                border: '1px solid #713200',
-                padding: '16px',
-                color: '#713200',
-              },
-              iconTheme: {
-                primary: '#713200',
-                secondary: '#FFFAEE',
-              },
-            });
-          }
-        }
-      } catch (error) {
-        console.log(error);
-      } finally {
-        this.setState({ loading: false });
-      }
-    }
-  }
-
-  changeQuery = newQuery => {
-    this.setState({
-      query: `${Date.now()}/${newQuery}`,
-      images: [],
-      page: 1,
-      totalPages: 1,
-    });
-  };
-
-  handleLoadMore = () => {
-    this.setState(prevState => ({ page: prevState.page + 1 }));
-  };
-
-  render() {
-    
-    return (
-      <StyledApp>
-        
-        <Loader />
-        <Toaster />
-        <GlobalStyle />
-      </StyledApp>
-    );
-  }
-}
+export default App;
