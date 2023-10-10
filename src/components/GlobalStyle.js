@@ -34,6 +34,11 @@ p {
 
 img {
     display: block;
+     max-width: 100%;
+}
+
+li {
+  list-style-type: none;  
 }
 
 a {

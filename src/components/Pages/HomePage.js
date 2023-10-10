@@ -1,32 +1,35 @@
-import React from 'react';
-import {Header} from '../Header/Header.js'
+import { fetchHome } from 'api';
+import { HomeList } from 'components/HomeList/HomeList';
+import { Loader } from 'components/Loader/Loader';
+import { useEffect, useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 
 const HomePage = () => {
-    return (
-        <>
-        <Header/>
-      <div>HomePage</div>;
-        </>
-    )
-    
+  const [trends, setTrends] = useState([]);
+  const [loader, setLoader] = useState(false);
+
+  useEffect(() => {
+    async function getMovies() {
+      setLoader(true);
+      try {
+        const movies = await fetchHome();
+
+        setTrends(movies);
+      } catch (error) {
+        toast.error(error);
+      } finally {
+        setLoader(false);
+      }
+    }
+    getMovies();
+  }, []);
+
+  return (
+    <>
+      {loader && <Loader />}
+      <HomeList items={trends} />
+      <Toaster position="bottom-center" reverseOrder={true} />
+    </>
+  );
 };
-
 export default HomePage;
-
-
-{/* <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-  <div class="navbar-nav">
-    <a class="nav-link active" aria-current="page" href="#">
-      Home
-    </a>
-    <a class="nav-link" href="#">
-      Features
-    </a>
-    <a class="nav-link" href="#">
-      Pricing
-    </a>
-    <a class="nav-link disabled" aria-disabled="true">
-      Disabled
-    </a>
-  </div>
-</div>; */}

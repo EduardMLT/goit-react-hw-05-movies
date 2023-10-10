@@ -1,12 +1,31 @@
-
-
 import { styled } from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
-export const StyledApp = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 16px;
-  padding-bottom: 24px;
-  padding-top: 20px;
-  text-align: center;
+
+export const Navigation = styled.nav`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  padding: 8px 0;
+  margin-bottom: 16px;
+  
+`;
+
+export const Link = styled(NavLink)`
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+
+  &.active {
+    color: white;
+    background-color: #8bdfc3;
+  }
+
+  &:hover,
+  :focus {
+    background-color: #6aa290;
+  }
 `;
