@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { List, Item } from './HomeList.styled';
+import { List, Item, TitleSpan } from './HomeList.styled';
 
 export const HomeList = ({ items, state }) => {
   return (
@@ -8,7 +8,7 @@ export const HomeList = ({ items, state }) => {
         return (
           <Item key={id}>
             <Link to={`/movies/${id}`} state={state}>
-              {original_title}
+              <TitleSpan>{original_title}</TitleSpan>
             </Link>
           </Item>
         );
