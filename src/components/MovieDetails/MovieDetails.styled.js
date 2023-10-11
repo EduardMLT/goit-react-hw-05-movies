@@ -8,6 +8,7 @@ export const Block = styled.div`
   padding: 20px 20px;
   margin-bottom: 16px;
   margin-right: 25px;
+  color: #6aa290;
 `;
 
 export const Gerns = styled.div`

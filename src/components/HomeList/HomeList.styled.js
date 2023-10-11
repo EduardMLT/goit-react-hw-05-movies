@@ -17,7 +17,8 @@ export const Item = styled.li`
 `;
 
 export const TitleSpan = styled.span`
-  color: rgb(106 162 144);
+  /* color: rgb(106 162 144); */
+  color: #6aa290;
 
   &:hover,
   :focus {
