@@ -9,6 +9,7 @@ export const Casts = ({ cast }) => {
           <li key={credit_id}>
             <img src={posterUpl + profile_path} alt={name} />
             <p>{name}</p>
+            
           </li>
         );
       })}

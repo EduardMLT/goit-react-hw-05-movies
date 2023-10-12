@@ -26,7 +26,7 @@ const Movies = () => {
       try {
         const response = await fetchSeachMovie(newName);
         setNameMovie(response);
-        console.log(response);
+        console.log('searchMovie ', response);
       } catch (error) {
         toast.error(error);
       } finally {

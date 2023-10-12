@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import { Block, Gerns } from './MovieDetails.styled';
 import { GoBack } from 'components/GoBack/GoBack';
+import { useRef } from 'react';
 
 export const MovieDetails = ({
   movie: { poster_path, title, release_date, overview, vote_average, name },
@@ -8,10 +9,10 @@ export const MovieDetails = ({
 }) => {
   const posterUpl = 'https://image.tmdb.org/t/p/w500';
   const location = useLocation();
-  const goBack = location?.state?.from ?? '/';
+  const goBack = useRef(location.state?.from ?? '/');
   return (
     <>
-      <GoBack to={goBack}>Go Back</GoBack>
+      <GoBack to={goBack.current}>Go Back</GoBack>
 
       <Block>
         <div>
