@@ -1,10 +1,15 @@
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import HomePage from './Pages/HomePage';
-import MovieDetailsPage from './Pages/MovieDetailsPage';
-import Movies from './Pages/Movies';
-import CastPage from './Pages/CastPage';
-import ReviewsPage from './Pages/ReviewsPage';
+
 import { Layout } from './Layout';
+
+
+const HomePage = lazy(() => import('./Pages/HomePage'));
+const MovieDetailsPage = lazy(() => import('./Pages/MovieDetailsPage'));
+const Movies = lazy(() => import('./Pages/Movies'));
+const CastPage = lazy(() => import('./Pages/CastPage'));
+const ReviewsPage = lazy(() => import('./Pages/ReviewsPage'));
+const NotFound = lazy(() => import('./Pages/NotFound'));
 
 export const App = () => {
   return (
@@ -19,6 +24,7 @@ export const App = () => {
             <Route path="reviews" element={<ReviewsPage />} />
           </Route>
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
